@@ -3,13 +3,14 @@
  * @return {number}
  */
  const climbStairs = function(n) {
-    const counts = [];
-    const climb = (n, counts) => {
-        if(counts[n]) return counts[n];
-        if(n === 0 || n === 1) {
-            return counts[n] = 1;
-        }
-        return counts[n] = climb(n - 2, counts) + climb(n - 1, counts);
-    };
-    return climb(n, counts);
+    let numWays;
+    let a = 1;
+    let b = 1;
+    for(let i = 0; i < n; i++) {
+        numWays = a + b;
+        a = b;
+        b = numWays;
+    }
+
+    return a;
 };
